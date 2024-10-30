@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export const StudentForm = () => {
+export const StudentForm = ({ handleAddStudent }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -17,6 +17,11 @@ export const StudentForm = () => {
       "http://localhost:4000/api/students/",
       student
     );
+
+    handleAddStudent(data.student);
+
+    setFirstName("");
+    setLastName("");
   };
 
   return (
